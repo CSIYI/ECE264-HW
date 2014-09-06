@@ -1,0 +1,62 @@
+==19610== Memcheck, a memory error detector
+==19610== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==19610== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==19610== Command: ./pa01
+==19610== Parent PID: 13071
+==19610== 
+--19610-- 
+--19610-- Valgrind options:
+--19610--    --tool=memcheck
+--19610--    --leak-check=full
+--19610--    --verbose
+--19610--    --log-file=memcheck.log
+--19610-- Contents of /proc/version:
+--19610--   Linux version 2.6.32-431.20.5.el6.x86_64 (mockbuild@x86-027.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Wed Jul 16 05:26:53 EDT 2014
+--19610-- Arch and hwcaps: AMD64, amd64-sse3-cx16-avx
+--19610-- Page sizes: currently 4096, max supported 4096
+--19610-- Valgrind library directory: /usr/lib64/valgrind
+--19610-- Reading syms from /home/shay/a/cai71/ECE264/problems/ECE264Assignments/Fall2014/PA01/pa01
+--19610-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--19610--    object doesn't have a dynamic symbol table
+--19610-- Reading syms from /lib64/ld-2.12.so
+--19610-- Scheduler: using generic scheduler lock implementation.
+--19610-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==19610== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-19610-by-cai71-on-ee207lnx11.ecn.purdue.edu
+==19610== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-19610-by-cai71-on-ee207lnx11.ecn.purdue.edu
+==19610== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-19610-by-cai71-on-ee207lnx11.ecn.purdue.edu
+==19610== 
+==19610== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==19610== don't want to do, unless you know exactly what you're doing,
+==19610== or are doing some strange experiment):
+==19610==   /usr/lib64/valgrind/../../bin/vgdb --pid=19610 ...command...
+==19610== 
+==19610== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==19610==   /path/to/gdb ./pa01
+==19610== and then give GDB the following command
+==19610==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=19610
+==19610== --pid is optional if only one valgrind process is running
+==19610== 
+--19610-- REDIR: 0x3577c17530 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--19610-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--19610-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--19610-- REDIR: 0x3577c173a0 (index) redirected to 0x4a07bf0 (index)
+--19610-- REDIR: 0x3577c17420 (strcmp) redirected to 0x4a08530 (strcmp)
+--19610-- Reading syms from /lib64/libc-2.12.so
+--19610-- REDIR: 0x3578084fc0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--19610-- REDIR: 0x3578087280 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--19610-- REDIR: 0x3578082f30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--19610-- REDIR: 0x3578081450 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--19610-- REDIR: 0x357807b810 (free) redirected to 0x4a06369 (free)
+==19610== 
+==19610== HEAP SUMMARY:
+==19610==     in use at exit: 0 bytes in 0 blocks
+==19610==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==19610== 
+==19610== All heap blocks were freed -- no leaks are possible
+==19610== 
+==19610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--19610-- 
+--19610-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--19610-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==19610== 
+==19610== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

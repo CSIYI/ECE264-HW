@@ -1,0 +1,30 @@
+Breakpoint 1 at 0x400964: file answer01.c, line 18.
+88	
+89	    // You can add more test-cases here
+90	    // ...
+91	
+92	    printf("\n");
+93	}
+94	
+95	int main(int argc, char * * argv)
+96	{
+97	    printf("Welcome to ECE264, we are working on PA01.\n\n");
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000400964 in arrayCountNegative at answer01.c:18
+Starting program: /home/shay/a/cai71/ECE264/problems/ECE264Assignments/Fall2014/PA01/pa01 
+
+Breakpoint 1, arrayCountNegative (array=0x7fffffffe340, len=4) at answer01.c:18
+18	    int counter = 0 ;
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.132.el6_5.3.x86_64
+13	    return sum;
+14	}
+15	
+16	int arrayCountNegative(int * array, int len)
+17	{   
+18	    int counter = 0 ;
+19	    int neg = 0;
+20	    while(counter <= len-1)
+21	    {
+22	      if(array[counter] < 0)
+$1 = 663168735
+$2 = 4
