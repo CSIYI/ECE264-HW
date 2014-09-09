@@ -13,7 +13,7 @@ size_t my_strlen(const char * str)
 }
 
 
-int my_coutchar(const char * str, char ch)
+int my_countchar(const char * str, char ch)
 {  
    int length = 0;
    int index = 0;
@@ -32,18 +32,22 @@ int my_coutchar(const char * str, char ch)
 
 char * my_strchr(const char * str, int ch)
 {
-  int length = 0; 
+  int length = my_strlen(str)+1;
+  int count = 0; 
   char * string = NULL;
 
 do
 {
-     if (str[length] == ch)
+     if (str[count] == ch)
      {
-        string = (char *)&str[length];               
+        string = (char *)&str[count];               
         return(string);
-     }   
-     length++;
-}while(str[length] != '\0'); 
+     }
+     else
+     {       
+       count++;
+     }
+}while(count <= length); 
 
   return(string);
 }
@@ -83,7 +87,7 @@ char * my_strstr(const char *haystack, const char * needle)
        {
            if (n == len)
            {
-             return((char*)needle);
+             return((char*)&haystack[length]);
            }
         }
         return(NULL);           
@@ -93,8 +97,7 @@ char * my_strstr(const char *haystack, const char * needle)
   if (needle == '\0')
   {
       return((char*)haystack);
-  
-}
+   }
 return(NULL);
 }
 
@@ -102,14 +105,15 @@ return(NULL);
 char * my_strcpy(char * dest, const char * src)
 {
   int index = 0;
-  int length = 0; 
- 
-  while(src[length] != '\0')
+
+
+  do
   {
      dest[index] = src [index];
      index++;
      
-  }
+  }while(dest[index] != '\0');
+
   return(dest);
 }   
 
@@ -123,8 +127,6 @@ char * my_strcat(char * dest, const char * src)
   {
      length++;
   }
-  
-  dest[length]=' ';
    
   while (src[index] != '\0')
   {
@@ -145,18 +147,49 @@ int my_isspace(int ch)
   return(ind);
 }
 
-/*
+
+
 int my_atoi(const char * str)
 {
   int ret = 0;
-  int index = 0;
- 
-  while(str[index] != ' ')
+  int minus = 0;
+    
+
+  while (str[0] == ' ' || str[0] == '\f' || str[0] =='\n' || str[0] == '\r' || str[0] == '\t' || str[0] == '\v')
   {
-  */       
+     str++;
+     
+  }
+  if(str[0] == '-')
+  {
+    str++;
+    minus = -1; 
+  }
+      
+  if(str [ret] >= '0' && str [ret] <= '9') 
+  {
+     while (str [0] >= '0' && str [0] <= '9')
+     {
+        ret = ret*10 + (*str - '0');
+        str++;
+      }
+          
+      if (minus != 0)
+      {
+        return(minus * ret);
+      }
+      else
+      {
+        return (ret);
+      }
+   }  
+              
+  else
+  {
+    return(0);
+  }         
 
-
-
+}
 
 
 
