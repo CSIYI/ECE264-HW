@@ -32,7 +32,7 @@ int my_countchar(const char * str, char ch)
 
 char * my_strchr(const char * str, int ch)
 {
-  int length = my_strlen(str)+1;
+  int length = my_strlen(str);
   int count = 0; 
   char * string = NULL;
 
@@ -43,11 +43,10 @@ do
         string = (char *)&str[count];               
         return(string);
      }
-     else
-     {       
-       count++;
-     }
-}while(count <= length); 
+               
+     count++;
+     
+}while(count <= length + 1); 
 
   return(string);
 }
@@ -62,7 +61,7 @@ char *my_strrchr(const char * str, int ch)
   {
     length--; 
   }
-  if (length > 0) 
+  if (length >= 0) 
   {     
     string =(char *)&str[length];
   }
@@ -77,7 +76,11 @@ char * my_strstr(const char *haystack, const char * needle)
   int len = my_strlen(needle);
   int length = 0;
   int n ;   
-  
+
+  if (needle[0] == '\0')
+  {
+    return((char*)&haystack[0] );
+  }  
   while(haystack[length] != '\0')
   {
      if(haystack[length] == needle[0])
@@ -85,7 +88,7 @@ char * my_strstr(const char *haystack, const char * needle)
         
         for(n= 0; haystack[length+n] == needle[n];n++)
        {
-           if (n == len)
+           if (n == len-1)
            {
              return((char*)&haystack[length]);
            }
@@ -94,10 +97,7 @@ char * my_strstr(const char *haystack, const char * needle)
       }       
       length++;
    }
-  if (needle == '\0')
-  {
-      return((char*)haystack);
-   }
+ 
 return(NULL);
 }
 
@@ -106,14 +106,13 @@ char * my_strcpy(char * dest, const char * src)
 {
   int index = 0;
 
-
   do
   {
      dest[index] = src [index];
      index++;
      
-  }while(dest[index] != '\0');
-
+  }while(src[index] != '\0');
+  dest[index] = '\0';
   return(dest);
 }   
 
@@ -130,10 +129,12 @@ char * my_strcat(char * dest, const char * src)
    
   while (src[index] != '\0')
   {
-     dest[1 + length + index]= src[index]; 
+     dest[length + index]= src[index]; 
      index++;
   }
-   
+ 
+  dest[length + index ]='\0'; 
+ 
   return(dest);
 }
 
