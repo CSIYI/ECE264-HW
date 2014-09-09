@@ -70,17 +70,17 @@ char *my_strrchr(const char * str, int ch)
 
 char * my_strstr(const char *haystack, const char * needle)
 {
-  int index;
   int len = my_strlen(needle);
   int length = 0;
-  int n = 0;   
+  int n ;   
   
   while(haystack[length] != '\0')
   {
-     if(haystack[length] == needle[n])
+     if(haystack[length] == needle[0])
      {
-        for(n; haystack[length+n] == needle[n];n++)
-        {
+        
+        for(n= 0; haystack[length+n] == needle[n];n++)
+       {
            if (n == len)
            {
              return((char*)needle);
@@ -93,13 +93,16 @@ char * my_strstr(const char *haystack, const char * needle)
   if (needle == '\0')
   {
       return((char*)haystack);
-  }
+  
+}
+return(NULL);
+}
 
 
 char * my_strcpy(char * dest, const char * src)
 {
   int index = 0;
- 
+  int length = 0; 
  
   while(src[length] != '\0')
   {
@@ -134,22 +137,23 @@ char * my_strcat(char * dest, const char * src)
 
 int my_isspace(int ch)
 { 
-  int index = 0;
+  int ind = 0;
   if (ch == ' ' || ch == '\f' || ch =='\n' || ch == '\r' || ch == '\t' || ch == '\v')
   {
-     index = 1;
+     ind = 1;
   } 
-  return(index);
-} 
+  return(ind);
+}
 
-/*int my_atoi(const char * str)
+/*
+int my_atoi(const char * str)
 {
   int ret = 0;
   int index = 0;
  
   while(str[index] != ' ')
   {
- */         
+  */       
 
 
 
