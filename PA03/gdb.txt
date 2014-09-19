@@ -1,0 +1,103 @@
+Breakpoint 1 at 0x40071d: file answer03.c, line 24.
+`/home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA03/a.out' has changed; re-reading symbols.
+(no debugging symbols found)
+Starting program: /home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA03/a.out 
+
+Breakpoint 1, 0x000000000040070d in strcat_ex ()
+Single stepping until exit from function strcat_ex,
+which has no line number information.
+
+Program received signal SIGABRT, Aborted.
+0x00000036c2832635 in raise (sig=6) at ../nptl/sysdeps/unix/sysv/linux/raise.c:64
+64	  return INLINE_SYSCALL (tgkill, 3, pid, selftid, sig);
+
+Program terminated with signal SIGABRT, Aborted.
+The program no longer exists.
+Breakpoint 2 at 0x400892
+The program is not being run.
+`/home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA03/a.out' has changed; re-reading symbols.
+(no debugging symbols found)
+Starting program: /home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA03/a.out 
+
+Breakpoint 1, 0x000000000040075e in strcat_ex ()
+Single stepping until exit from function strcat_ex,
+which has no line number information.
+0x00000000004006fa in main ()
+Single stepping until exit from function main,
+which has no line number information.
+
+Breakpoint 2, 0x00000000004008b1 in explode ()
+Single stepping until exit from function explode,
+which has no line number information.
+
+Program received signal SIGSEGV, Segmentation fault.
+memcpy () at ../sysdeps/x86_64/memcpy.S:162
+162		movb	%al, (%rdi)
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+157	
+158		.p2align 4
+159	
+160	L(alignloop):				/* 1-byte alignment loop */
+161		movzbl	(%rsi), %eax
+162		movb	%al, (%rdi)
+163	
+164		incl	%ecx
+165	
+166		leaq	1(%rsi), %rsi
+The program is not being run.
+Starting program: /home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA03/a.out 
+
+Breakpoint 1, 0x000000000040075e in strcat_ex ()
+Single stepping until exit from function strcat_ex,
+which has no line number information.
+0x00000000004006fa in main ()
+1	/* Copyright (C) 1998-2006, 2007, 2009 Free Software Foundation, Inc.
+2	   This file is part of the GNU C Library.
+3	
+4	   The GNU C Library is free software; you can redistribute it and/or
+5	   modify it under the terms of the GNU Lesser General Public
+6	   License as published by the Free Software Foundation; either
+7	   version 2.1 of the License, or (at your option) any later version.
+8	
+9	   The GNU C Library is distributed in the hope that it will be useful,
+10	   but WITHOUT ANY WARRANTY; without even the implied warranty of
+Single stepping until exit from function main,
+which has no line number information.
+
+Breakpoint 2, 0x00000000004008b1 in explode ()
+11	   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+12	   Lesser General Public License for more details.
+13	
+14	   You should have received a copy of the GNU Lesser General Public
+15	   License along with the GNU C Library; if not, write to the Free
+16	   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+17	   02111-1307 USA.  */
+18	
+19	#include <stdlib.h>
+20	#include <stdio.h>
+Single stepping until exit from function explode,
+which has no line number information.
+
+Program received signal SIGSEGV, Segmentation fault.
+memcpy () at ../sysdeps/x86_64/memcpy.S:162
+162		movb	%al, (%rdi)
+157	
+158		.p2align 4
+159	
+160	L(alignloop):				/* 1-byte alignment loop */
+161		movzbl	(%rsi), %eax
+162		movb	%al, (%rdi)
+163	
+164		incl	%ecx
+165	
+166		leaq	1(%rsi), %rsi
+Hangup detected on fd 0
+Error detected on fd 0
+error detected on stdin
+A debugging session is active.
+
+	Inferior 1 [process 13654] will be killed.
+
+Quit anyway? (y or n) EOF [assumed Y]
