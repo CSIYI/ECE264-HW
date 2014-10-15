@@ -1,16 +1,20 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "answer05.h"
+
 
 //print function
 void print(int * arr, int length)//FROM BOOK
 {
   int ind;
-  for (ind = 0; ind < length -1; ind ++ )
-  {
-    printf("%d + ", arr[ind]);
+  printf("=");  
+    for (ind = 0; ind < length -1; ind ++ )
+    {
+      printf("%d + ", arr[ind]);
    
-  }
-  printf("%d\n", arr[length - 1]);
+    }
+    printf("%d\n", arr[length - 1]);
+  
 }
 //
 //partitionALL
@@ -30,7 +34,7 @@ void partition(int * arr, int ind, int input)//FROM BOOK
   }
 }
 
-void partitionALL(int value)//FROM BOOK
+void partitionAll(int value)//FROM BOOK
 {
   int * arr;
   arr = malloc(sizeof(int) * value);
@@ -68,28 +72,29 @@ void partitionIncreasing(int value)
 }
 //
 //partitionDecreasing
-void partitionDE (int * arr, int ind, int input)
+void partitionDE(int * arr, int ind, int input, int dec)
 {
-  int value;
-  if (input == 0)
-  {
-    print(arr, ind);
-  }
-  int quo = input/2 + 1;  
-  for (value = quo; value <= input; value ++)
-  {
-    arr[ind] = value;
-    quo = input - value;
-    partitionDE(arr, ind + 1, input -value);
+   int value;
+   if (input == 0)
+   {
+     print(arr, ind);
+   }
+ 
+   for(value = dec; value > 0; value --)
+   {
+     arr[ind] = value;
+     dec = value -1 ;
+ 
+     partitionDE(arr, ind + 1, input - value, dec);
+   }
+ 
+ }
 
-  }
-}
-  
 void partitionDecreasing(int value)
 {
   int * arr;
   arr = malloc(sizeof(int) * value);
-  partitionDE(arr, 0,value);
+  partitionDE(arr, 0,value,value);
   free(arr);
 }  
 //
@@ -186,24 +191,30 @@ void partitionP(int * arr, int ind, int input)
   {
     print(arr, ind);
   }
-  for(value = 1; value <= input; value ++)
+  for(value = 2; value <= input; value ++)
   {
     int check = 0;
-    if (ind == 0)
+   if(value == 2)
     {
       check = 1;
-    }
+    }    
     else
     {
       int i;
       for (i = 2; i < value; i++)
       {
-        if(value % i == 0 && i != value)
+        if(value % i == 0 )
         {
-          check = 0;
+          
+	  check = 0;
+          break;
         }
-      }
-      check = 1;
+	else
+        {
+	  check = 1;
+        } 
+     }
+     
     }
     if (check == 1)
     {
@@ -219,25 +230,3 @@ void partitionPrime(int value)
   partitionP(arr, 0 , value);
   free(arr);
 }
-// test main function
-int main()
-{
-  printf("print out all the partition\n");
-  partitionALL(5);
-  printf("print out increasing partition\n");
-  partitionIncreasing(5);
-  printf("print out decreasing partition\n");
-  partitionDecreasing(5);
-  printf("more ex for de\n");
-  partitionDecreasing(6);
-  printf("print out odd partition\n");
-  partitionOdd(5);
-  printf("print out even partition\n");
-  partitionEven(6);
-  printf("print out odd and even partition\n");
-  partitionOddAndEven(5);
-  printf("print prime partition\n");
-  partitionPrime(5);
-  return 0;
-}
-//
