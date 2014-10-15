@@ -1,0 +1,11 @@
+Breakpoint 1 at 0x400564: file echo-lite.c, line 10.
+The program is not being run.
+Starting program: /home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA04/a.out 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe498) at echo-lite.c:12
+12	  printf("\n");
+13	return EXIT_SUCCESS;
+14	}
+Continuing.
+
+Program exited normally.

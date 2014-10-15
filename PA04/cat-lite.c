@@ -6,12 +6,11 @@
 int main(int argc, char ** argv)
 { 
   int ind;
-  int n = 300; 
+  
   for (ind = 1; ind < argc; ind ++)
   {
     if (strcmp(argv[ind], "--help") == 0)
     {
-      printf("<help-message>\n");
       printf("Usage: cat-lite [--help] [FILE]...\n");
       printf("With no FILE, or when FILE is -, read standard input.\n\n");
       printf("Examples:\n");
@@ -19,15 +18,22 @@ int main(int argc, char ** argv)
       printf("  cat-lite f - g    Print f's contents, then standard input,\n"); 
       printf("                    then g's contents.\n");
       printf("  cat-lite          Copy standard input to standard output.\n");
-      printf("</help-message>\n\n");
       return EXIT_SUCCESS; 
     }
 
   }
-  int index;
-  for(index = 1; index < argc; index ++)
+  if (argc == 1)
   {
-     if(strcmp(argv[index],"-") == 0)
+    char ch; 
+     while ((ch = fgetc(stdin)) != EOF)
+     {
+       fprintf(stdout, "%c", ch);
+     }
+  }
+  int num = 1;  
+  for(num = 1; num < argc; num ++)
+  {
+     if(strcmp(argv[num],"-") == 0)
      { 
        int n = 300;
        char buffer[n];  
@@ -38,10 +44,10 @@ int main(int argc, char ** argv)
      }
      else
      {
-       FILE * fp = fopen(argv[index], "r");
+       FILE * fp = fopen(argv[num], "r");
        if (fp == NULL)
        {
-         fprintf(stderr, "cat cannnot open %s\n", argv[index]);
+         fprintf(stderr, "cat cannnot open %s\n", argv[num]);
          return EXIT_FAILURE;
        }
        char ch;  
