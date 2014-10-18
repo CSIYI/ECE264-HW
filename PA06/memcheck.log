@@ -1,0 +1,135 @@
+==13572== Memcheck, a memory error detector
+==13572== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==13572== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==13572== Command: ./a.out sample.0.5x5
+==13572== Parent PID: 29776
+==13572== 
+--13572-- 
+--13572-- Valgrind options:
+--13572--    --tool=memcheck
+--13572--    --leak-check=full
+--13572--    --verbose
+--13572--    --log-file=memcheck.log
+--13572-- Contents of /proc/version:
+--13572--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--13572-- Arch and hwcaps: AMD64, amd64-sse3
+--13572-- Page sizes: currently 4096, max supported 4096
+--13572-- Valgrind library directory: /usr/lib64/valgrind
+--13572-- Reading syms from /home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA06/a.out
+--13572-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--13572--    object doesn't have a dynamic symbol table
+--13572-- Reading syms from /lib64/ld-2.12.so
+--13572-- Scheduler: using generic scheduler lock implementation.
+--13572-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==13572== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-13572-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==13572== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-13572-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==13572== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-13572-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==13572== 
+==13572== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==13572== don't want to do, unless you know exactly what you're doing,
+==13572== or are doing some strange experiment):
+==13572==   /usr/lib64/valgrind/../../bin/vgdb --pid=13572 ...command...
+==13572== 
+==13572== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==13572==   /path/to/gdb ./a.out
+==13572== and then give GDB the following command
+==13572==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=13572
+==13572== --pid is optional if only one valgrind process is running
+==13572== 
+--13572-- REDIR: 0x3822617610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--13572-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--13572-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--13572-- REDIR: 0x3822617480 (index) redirected to 0x4a07c30 (index)
+--13572-- REDIR: 0x3822617500 (strcmp) redirected to 0x4a08570 (strcmp)
+--13572-- Reading syms from /lib64/libc-2.12.so
+--13572-- REDIR: 0x3822a84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--13572-- REDIR: 0x3822a86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--13572-- REDIR: 0x3822a82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--13572-- REDIR: 0x3822a7a640 (malloc) redirected to 0x4a069ac (malloc)
+--13572-- REDIR: 0x3822a83350 (memchr) redirected to 0x4a08610 (memchr)
+--13572-- REDIR: 0x3822a89670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--13572-- REDIR: 0x3822a81120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--13572-- REDIR: 0x3822a81160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--13572-- REDIR: 0x3822a7b520 (free) redirected to 0x4a063a9 (free)
+--13572-- REDIR: 0x3822a8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+==13572== Invalid read of size 1
+==13572==    at 0x4008D0: direction (answer06.c:33)
+==13572==    by 0x400A77: direction (answer06.c:56)
+==13572==    by 0x400A77: direction (answer06.c:56)
+==13572==    by 0x400BBE: print_directions (answer06.c:81)
+==13572==    by 0x400D04: main (pa06.c:37)
+==13572==  Address 0x4c3b36f is 1 bytes before a block of size 102 alloc'd
+==13572==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==13572==    by 0x400DE6: read_and_alloc_maze (pa06.c:61)
+==13572==    by 0x400C66: main (pa06.c:26)
+==13572== 
+==13572== Invalid read of size 1
+==13572==    at 0x40090D: direction (answer06.c:34)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400BBE: print_directions (answer06.c:81)
+==13572==    by 0x400D04: main (pa06.c:37)
+==13572==  Address 0x3 is not stack'd, malloc'd or (recently) free'd
+==13572== 
+==13572== 
+==13572== Process terminating with default action of signal 11 (SIGSEGV)
+==13572==  Access not within mapped region at address 0x3
+==13572==    at 0x40090D: direction (answer06.c:34)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400BBE: print_directions (answer06.c:81)
+==13572==    by 0x400D04: main (pa06.c:37)
+==13572==  If you believe this happened as a result of a stack
+==13572==  overflow in your program's main thread (unlikely but
+==13572==  possible), you can try to increase the size of the
+==13572==  main thread stack using the --main-stacksize= flag.
+==13572==  The main thread stack size used in this run was 10485760.
+==13572== 
+==13572== HEAP SUMMARY:
+==13572==     in use at exit: 510 bytes in 5 blocks
+==13572==   total heap usage: 7 allocs, 2 frees, 1,180 bytes allocated
+==13572== 
+==13572== Searching for pointers to 5 not-freed blocks
+==13572== Checked 65,816 bytes
+==13572== 
+==13572== LEAK SUMMARY:
+==13572==    definitely lost: 0 bytes in 0 blocks
+==13572==    indirectly lost: 0 bytes in 0 blocks
+==13572==      possibly lost: 0 bytes in 0 blocks
+==13572==    still reachable: 510 bytes in 5 blocks
+==13572==         suppressed: 0 bytes in 0 blocks
+==13572== Reachable blocks (those to which a pointer was found) are not shown.
+==13572== To see them, rerun with: --leak-check=full --show-reachable=yes
+==13572== 
+==13572== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+==13572== 
+==13572== 1 errors in context 1 of 2:
+==13572== Invalid read of size 1
+==13572==    at 0x40090D: direction (answer06.c:34)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400AC3: direction (answer06.c:61)
+==13572==    by 0x400BBE: print_directions (answer06.c:81)
+==13572==    by 0x400D04: main (pa06.c:37)
+==13572==  Address 0x3 is not stack'd, malloc'd or (recently) free'd
+==13572== 
+==13572== 
+==13572== 1 errors in context 2 of 2:
+==13572== Invalid read of size 1
+==13572==    at 0x4008D0: direction (answer06.c:33)
+==13572==    by 0x400A77: direction (answer06.c:56)
+==13572==    by 0x400A77: direction (answer06.c:56)
+==13572==    by 0x400BBE: print_directions (answer06.c:81)
+==13572==    by 0x400D04: main (pa06.c:37)
+==13572==  Address 0x4c3b36f is 1 bytes before a block of size 102 alloc'd
+==13572==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==13572==    by 0x400DE6: read_and_alloc_maze (pa06.c:61)
+==13572==    by 0x400C66: main (pa06.c:26)
+==13572== 
+--13572-- 
+--13572-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--13572-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==13572== 
+==13572== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
