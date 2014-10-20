@@ -1,0 +1,14 @@
+Starting program: /home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA06/answer06 
+
+Program exited with code 01.
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.149.el6.x86_64
+Starting program: /home/shay/a/cai71/ECE264/solutions/ECE264-HW/PA06/answer06 sample.2.9*7
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400958 in direction ()
+Single stepping until exit from function direction,
+which has no line number information.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+The history is empty.

@@ -32,12 +32,12 @@ int main(int argc, char *argv[]) {
 		free_maze(maze, h);
 		return EXIT_FAILURE;
 	}
-        print_maze(maze, w,h);
+        print_maze(maze,w, h);
 	// Print the directions to traverse the entire maze.
 	print_directions(maze, w, h);
 
 	// Uncomment these lines to print the entire maze when it finishes.
-	printf("\n--------------------------------------\n");
+	//printf("\n--------------------------------------\n");
 	print_maze(maze, w, h);
 
 	// Free the memory on the heap for the maze.
