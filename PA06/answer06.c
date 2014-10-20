@@ -22,72 +22,109 @@ void printstep(int change_y, int change_x, int step)
   }
 }
 
+
+int countspace (char ** maze, int w, int h )
+{
+ 
+  int y = 0;
+  int count = 0;
+  while  (y < h)
+  {
+   int  x = 0;
+    while (x < w )
+    {
+      if (maze[y][x] == ' ')
+      {
+
+        count ++;
+      }
+      x++;
+     }
+     y++;
+     
+  }
+  
+  if(count) 
+  {
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
+}
+
 void direction(char ** Maze, int W, int H, int pos_y, int pos_x, int changeY, int changeX)
 {
+  
   int num_step = 1;
 
     pos_x += changeX;
     pos_y += changeY;
-    Maze[pos_y][pos_x] = Track;
-    printstep(changeY, changeX,num_step);
-    int east =((pos_x + 1) < W) && (Maze[pos_y][pos_x + 1] == ' ');
-    int west = ((pos_x - 1) >= 0) && (Maze[pos_y][pos_x - 1] == ' ');
-    int north = ((pos_y - 1) >= 0 )&&(Maze[pos_y - 1][pos_x] == ' ');
-    int south =((pos_y + 1) < H )&& (Maze[pos_y + 1][pos_x] == ' ');
+  if (countspace(Maze, W, H))
+  {   
+      Maze[pos_y][pos_x] = Track;
+
+      printstep(changeY, changeX,num_step);
+      int east =((pos_x + 1) < W) && (Maze[pos_y][pos_x + 1] == ' ');
+      int west = ((pos_x - 1) >= 0) && (Maze[pos_y][pos_x - 1] == ' ');
+      int north = ((pos_y - 1) >= 0 )&&(Maze[pos_y - 1][pos_x] == ' ');
+      int south =((pos_y + 1) < H )&& (Maze[pos_y + 1][pos_x] == ' ');
+
     
-    
-    if (east == 0 &&  west == 0 &&  north == 0 && south == 0)
-    {
-      Maze[pos_y][pos_x] = WALL;  
+      if (east == 0 &&  west == 0 &&  north == 0 && south == 0 )
+      {
+        Maze[pos_y][pos_x] = WALL;  
       
 
-      int reeast = ((pos_x + 1) < W ) &&(Maze[pos_y][pos_x + 1] == Track) ;
-      int rewest = ((pos_x - 1) > 0)&& (Maze[pos_y][pos_x - 1] == Track );
-      int renorth = ((pos_y - 1) >  0) && (Maze[pos_y - 1][pos_x] == Track );
-      int resouth = ((pos_y + 1) < H )&& (Maze[pos_y + 1][pos_x] == Track );
+        int reeast = ((pos_x + 1) < (W - 1) ) &&(Maze[pos_y][pos_x + 1] == Track) ;
+        int rewest = ((pos_x - 1) > 0)&& (Maze[pos_y][pos_x - 1] == Track );
+        int renorth = ((pos_y - 1) >  0) && (Maze[pos_y - 1][pos_x] == Track );
+        int resouth = ((pos_y + 1) < (H - 1) )&& (Maze[pos_y + 1][pos_x] == Track );
  
-       if (reeast)
-       {
-         direction(Maze, W, H, pos_y, pos_x, 0,1);
-       }
-       if (rewest)
-       {
+         if (reeast)
+         {
+           direction(Maze, W, H, pos_y, pos_x, 0,1);
+         }
+         if (rewest)
+         {
 
-         direction (Maze, W, H, pos_y, pos_x, 0, -1);
-       }
-       if (renorth)
-       {
+           direction (Maze, W, H, pos_y, pos_x, 0, -1);
+         }
+         if (renorth )
+         {
 
-         direction (Maze, W, H, pos_y, pos_x, -1, 0);
-       }
-       if (resouth)
-       {
+           direction (Maze, W, H, pos_y, pos_x, -1, 0);
+         }
+         if (resouth )
+         {
 
-         direction (Maze, W, H, pos_y, pos_x, 1, 0);
-       }
-       return;
-    }
-    else
-    {
-      if (east)
-      {
-        direction(Maze, W, H, pos_y, pos_x, 0,1);
+           direction (Maze, W, H, pos_y, pos_x, 1, 0);
+         }
+         return;
       }
-      if (west)
+      else
       {
-        direction (Maze, W, H, pos_y, pos_x, 0, -1);
+        if (east)
+        {
+          direction(Maze, W, H, pos_y, pos_x, 0,1);
+        }
+        if (west)
+        {
+          direction (Maze, W, H, pos_y, pos_x, 0, -1);
+        }
+        if (north )
+        {
+          direction (Maze, W, H, pos_y, pos_x, -1, 0);
+        }
+        if (south )
+        {
+          direction (Maze, W, H, pos_y, pos_x, 1, 0);
+        }
       }
-      if (north)
-      {
-        direction (Maze, W, H, pos_y, pos_x, -1, 0);
-       }
-      if (south)
-      {
-        direction (Maze, W, H, pos_y, pos_x, 1, 0);
-      }
-    }
- 
-}
+  }
+}    
+
 void print_directions(char ** maze, int w, int h)
 {
   int posx = 0;
