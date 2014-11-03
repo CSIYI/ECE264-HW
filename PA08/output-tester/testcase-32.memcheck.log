@@ -1,0 +1,118 @@
+==14921== Memcheck, a memory error detector
+==14921== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==14921== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==14921== Command: ./a.out 31
+==14921== Parent PID: 14920
+==14921== 
+--14921-- 
+--14921-- Valgrind options:
+--14921--    --tool=memcheck
+--14921--    --leak-check=full
+--14921--    --verbose
+--14921--    --log-file=memcheck.log
+--14921-- Contents of /proc/version:
+--14921--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--14921-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--14921-- Page sizes: currently 4096, max supported 4096
+--14921-- Valgrind library directory: /usr/lib64/valgrind
+--14921-- Reading syms from /tmp/.ek08T3/a.out
+--14921-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--14921--    object doesn't have a dynamic symbol table
+--14921-- Reading syms from /lib64/ld-2.12.so
+--14921--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--14921--   .. build-id is valid
+--14921-- Scheduler: using generic scheduler lock implementation.
+--14921-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==14921== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-14921-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==14921== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-14921-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==14921== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-14921-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==14921== 
+==14921== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==14921== don't want to do, unless you know exactly what you're doing,
+==14921== or are doing some strange experiment):
+==14921==   /usr/lib64/valgrind/../../bin/vgdb --pid=14921 ...command...
+==14921== 
+==14921== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==14921==   /path/to/gdb ./a.out
+==14921== and then give GDB the following command
+==14921==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=14921
+==14921== --pid is optional if only one valgrind process is running
+==14921== 
+--14921-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--14921-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--14921-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--14921-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--14921-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--14921-- Reading syms from /lib64/libc-2.12.so
+--14921--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--14921--   .. build-id is valid
+--14921-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--14921-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--14921-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--14921-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--14921-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--14921-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--14921-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--14921-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--14921-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+--14921-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--14921-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+==14921== 
+==14921== HEAP SUMMARY:
+==14921==     in use at exit: 72 bytes in 8 blocks
+==14921==   total heap usage: 17 allocs, 9 frees, 176 bytes allocated
+==14921== 
+==14921== Searching for pointers to 8 not-freed blocks
+==14921== Checked 64,552 bytes
+==14921== 
+==14921== 18 (16 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 8
+==14921==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==14921==    by 0x400B61: List_createNode_sol (<stdin>:19)
+==14921==    by 0x400F9E: List_create (test_support_functions.c:48)
+==14921==    by 0x40119F: make_list (test_support_functions.c:77)
+==14921==    by 0x401F79: tests_List_sort (test_List_sort.c:106)
+==14921==    by 0x4021CD: main (<stdin>:159)
+==14921== 
+==14921== 18 (16 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 8
+==14921==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==14921==    by 0x400B61: List_createNode_sol (<stdin>:19)
+==14921==    by 0x400F9E: List_create (test_support_functions.c:48)
+==14921==    by 0x400FBB: List_create (test_support_functions.c:49)
+==14921==    by 0x40119F: make_list (test_support_functions.c:77)
+==14921==    by 0x401F79: tests_List_sort (test_List_sort.c:106)
+==14921==    by 0x4021CD: main (<stdin>:159)
+==14921== 
+==14921== 18 (16 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 8
+==14921==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==14921==    by 0x400B61: List_createNode_sol (<stdin>:19)
+==14921==    by 0x400F9E: List_create (test_support_functions.c:48)
+==14921==    by 0x400FBB: List_create (test_support_functions.c:49)
+==14921==    by 0x400FBB: List_create (test_support_functions.c:49)
+==14921==    by 0x40119F: make_list (test_support_functions.c:77)
+==14921==    by 0x401F79: tests_List_sort (test_List_sort.c:106)
+==14921==    by 0x4021CD: main (<stdin>:159)
+==14921== 
+==14921== 18 (16 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 8 of 8
+==14921==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==14921==    by 0x400B61: List_createNode_sol (<stdin>:19)
+==14921==    by 0x400F9E: List_create (test_support_functions.c:48)
+==14921==    by 0x400FBB: List_create (test_support_functions.c:49)
+==14921==    by 0x400FBB: List_create (test_support_functions.c:49)
+==14921==    by 0x400FBB: List_create (test_support_functions.c:49)
+==14921==    by 0x40119F: make_list (test_support_functions.c:77)
+==14921==    by 0x401F79: tests_List_sort (test_List_sort.c:106)
+==14921==    by 0x4021CD: main (<stdin>:159)
+==14921== 
+==14921== LEAK SUMMARY:
+==14921==    definitely lost: 64 bytes in 4 blocks
+==14921==    indirectly lost: 8 bytes in 4 blocks
+==14921==      possibly lost: 0 bytes in 0 blocks
+==14921==    still reachable: 0 bytes in 0 blocks
+==14921==         suppressed: 0 bytes in 0 blocks
+==14921== 
+==14921== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 6 from 6)
+--14921-- 
+--14921-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--14921-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==14921== 
+==14921== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 6 from 6)

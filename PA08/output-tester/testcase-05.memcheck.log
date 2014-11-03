@@ -1,0 +1,84 @@
+==6186== Memcheck, a memory error detector
+==6186== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==6186== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==6186== Command: ./a.out 4
+==6186== Parent PID: 6185
+==6186== 
+--6186-- 
+--6186-- Valgrind options:
+--6186--    --tool=memcheck
+--6186--    --leak-check=full
+--6186--    --verbose
+--6186--    --log-file=memcheck.log
+--6186-- Contents of /proc/version:
+--6186--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--6186-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--6186-- Page sizes: currently 4096, max supported 4096
+--6186-- Valgrind library directory: /usr/lib64/valgrind
+--6186-- Reading syms from /tmp/.IrAPOv/a.out
+--6186-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--6186--    object doesn't have a dynamic symbol table
+--6186-- Reading syms from /lib64/ld-2.12.so
+--6186--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--6186--   .. build-id is valid
+--6186-- Scheduler: using generic scheduler lock implementation.
+--6186-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==6186== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-6186-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==6186== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-6186-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==6186== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-6186-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==6186== 
+==6186== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==6186== don't want to do, unless you know exactly what you're doing,
+==6186== or are doing some strange experiment):
+==6186==   /usr/lib64/valgrind/../../bin/vgdb --pid=6186 ...command...
+==6186== 
+==6186== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==6186==   /path/to/gdb ./a.out
+==6186== and then give GDB the following command
+==6186==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=6186
+==6186== --pid is optional if only one valgrind process is running
+==6186== 
+--6186-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--6186-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--6186-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--6186-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--6186-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--6186-- Reading syms from /lib64/libc-2.12.so
+--6186--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--6186--   .. build-id is valid
+--6186-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6186-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6186-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--6186-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--6186-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--6186-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--6186-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--6186-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--6186-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+==6186== 
+==6186== HEAP SUMMARY:
+==6186==     in use at exit: 28 bytes in 2 blocks
+==6186==   total heap usage: 2 allocs, 0 frees, 28 bytes allocated
+==6186== 
+==6186== Searching for pointers to 2 not-freed blocks
+==6186== Checked 64,552 bytes
+==6186== 
+==6186== 28 (16 direct, 12 indirect) bytes in 1 blocks are definitely lost in loss record 2 of 2
+==6186==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==6186==    by 0x400B51: List_createNode_sol (<stdin>:19)
+==6186==    by 0x40146B: tests_List_destroyNode (test_List_destroyNode.c:33)
+==6186==    by 0x4021BD: main (<stdin>:159)
+==6186== 
+==6186== LEAK SUMMARY:
+==6186==    definitely lost: 16 bytes in 1 blocks
+==6186==    indirectly lost: 12 bytes in 1 blocks
+==6186==      possibly lost: 0 bytes in 0 blocks
+==6186==    still reachable: 0 bytes in 0 blocks
+==6186==         suppressed: 0 bytes in 0 blocks
+==6186== 
+==6186== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--6186-- 
+--6186-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--6186-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==6186== 
+==6186== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)

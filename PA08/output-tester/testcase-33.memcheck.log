@@ -1,0 +1,116 @@
+==18980== Memcheck, a memory error detector
+==18980== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==18980== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==18980== Command: ./a.out 32
+==18980== Parent PID: 18979
+==18980== 
+--18980-- 
+--18980-- Valgrind options:
+--18980--    --tool=memcheck
+--18980--    --leak-check=full
+--18980--    --verbose
+--18980--    --log-file=memcheck.log
+--18980-- Contents of /proc/version:
+--18980--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--18980-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--18980-- Page sizes: currently 4096, max supported 4096
+--18980-- Valgrind library directory: /usr/lib64/valgrind
+--18980-- Reading syms from /tmp/.ek08T3/a.out
+--18980-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--18980--    object doesn't have a dynamic symbol table
+--18980-- Reading syms from /lib64/ld-2.12.so
+--18980--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--18980--   .. build-id is valid
+--18980-- Scheduler: using generic scheduler lock implementation.
+--18980-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==18980== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-18980-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==18980== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-18980-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==18980== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-18980-by-cai71-on-ecegrid-thin1.ecn.purdue.edu
+==18980== 
+==18980== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==18980== don't want to do, unless you know exactly what you're doing,
+==18980== or are doing some strange experiment):
+==18980==   /usr/lib64/valgrind/../../bin/vgdb --pid=18980 ...command...
+==18980== 
+==18980== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==18980==   /path/to/gdb ./a.out
+==18980== and then give GDB the following command
+==18980==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=18980
+==18980== --pid is optional if only one valgrind process is running
+==18980== 
+--18980-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--18980-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--18980-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--18980-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--18980-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--18980-- Reading syms from /lib64/libc-2.12.so
+--18980--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--18980--   .. build-id is valid
+--18980-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--18980-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--18980-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--18980-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--18980-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--18980-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--18980-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--18980-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--18980-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+==18980== 
+==18980== HEAP SUMMARY:
+==18980==     in use at exit: 72 bytes in 8 blocks
+==18980==   total heap usage: 17 allocs, 9 frees, 176 bytes allocated
+==18980== 
+==18980== Searching for pointers to 8 not-freed blocks
+==18980== Checked 64,552 bytes
+==18980== 
+==18980== 18 (16 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 8
+==18980==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==18980==    by 0x400B61: List_createNode_sol (<stdin>:19)
+==18980==    by 0x400F9E: List_create (test_support_functions.c:48)
+==18980==    by 0x40119F: make_list (test_support_functions.c:77)
+==18980==    by 0x401F95: tests_List_sort (test_List_sort.c:107)
+==18980==    by 0x4021CD: main (<stdin>:159)
+==18980== 
+==18980== 18 (16 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 8
+==18980==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==18980==    by 0x400B61: List_createNode_sol (<stdin>:19)
+==18980==    by 0x400F9E: List_create (test_support_functions.c:48)
+==18980==    by 0x400FBB: List_create (test_support_functions.c:49)
+==18980==    by 0x40119F: make_list (test_support_functions.c:77)
+==18980==    by 0x401F95: tests_List_sort (test_List_sort.c:107)
+==18980==    by 0x4021CD: main (<stdin>:159)
+==18980== 
+==18980== 18 (16 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 8
+==18980==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==18980==    by 0x400B61: List_createNode_sol (<stdin>:19)
+==18980==    by 0x400F9E: List_create (test_support_functions.c:48)
+==18980==    by 0x400FBB: List_create (test_support_functions.c:49)
+==18980==    by 0x400FBB: List_create (test_support_functions.c:49)
+==18980==    by 0x40119F: make_list (test_support_functions.c:77)
+==18980==    by 0x401F95: tests_List_sort (test_List_sort.c:107)
+==18980==    by 0x4021CD: main (<stdin>:159)
+==18980== 
+==18980== 18 (16 direct, 2 indirect) bytes in 1 blocks are definitely lost in loss record 8 of 8
+==18980==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==18980==    by 0x400B61: List_createNode_sol (<stdin>:19)
+==18980==    by 0x400F9E: List_create (test_support_functions.c:48)
+==18980==    by 0x400FBB: List_create (test_support_functions.c:49)
+==18980==    by 0x400FBB: List_create (test_support_functions.c:49)
+==18980==    by 0x400FBB: List_create (test_support_functions.c:49)
+==18980==    by 0x40119F: make_list (test_support_functions.c:77)
+==18980==    by 0x401F95: tests_List_sort (test_List_sort.c:107)
+==18980==    by 0x4021CD: main (<stdin>:159)
+==18980== 
+==18980== LEAK SUMMARY:
+==18980==    definitely lost: 64 bytes in 4 blocks
+==18980==    indirectly lost: 8 bytes in 4 blocks
+==18980==      possibly lost: 0 bytes in 0 blocks
+==18980==    still reachable: 0 bytes in 0 blocks
+==18980==         suppressed: 0 bytes in 0 blocks
+==18980== 
+==18980== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 6 from 6)
+--18980-- 
+--18980-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--18980-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==18980== 
+==18980== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 6 from 6)
