@@ -1,0 +1,2411 @@
+   ---------------------------------------------------------------------------
+   Welcome to the PA09 testing program. This program takes a _long_ time
+   to execute. There is a reason for this. You should not rely on this
+   program to test your code as you go. Instead, you should think about
+   what your code should be doing, and what inputs should produce what
+   outputs for each of your functions.
+   
+        YOU SHOULD THEN TEST EVERY PIECE OF CODE AS YOU WRITE IT 
+   
+                                 AND 
+   
+                        FIX MISTAKES AS YOU GO.
+   
+   When you are convinced that you have the entire assignment 100%% correct,
+   then you can use this testing program to test it. 
+   
+   This will give you your mark assuming that you submit it correctly, and 
+   there are no other irregularities.
+   ---------------------------------------------------------------------------
+
+test 1 :: passing incorrect filename to load_tree_from_file()
+
+	char * filename = "carzyfilename";
+	BusinessNode * root;
+	root = load_tree_from_file(filename);
+
+   (pass.)
+Memory errors detected, testcase failed.
+==4905== Memcheck, a memory error detector
+==4905== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==4905== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==4905== Command: /tmp/.lwIi7M/a.out 0
+==4905== Parent PID: 4903
+==4905== 
+--4905-- 
+--4905-- Valgrind options:
+--4905--    --tool=memcheck
+--4905--    --leak-check=full
+--4905--    --verbose
+--4905--    --log-file=memcheck.log
+--4905-- Contents of /proc/version:
+--4905--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--4905-- Arch and hwcaps: AMD64, amd64-sse3
+--4905-- Page sizes: currently 4096, max supported 4096
+--4905-- Valgrind library directory: /usr/lib64/valgrind
+--4905-- Reading syms from /tmp/.lwIi7M/a.out
+--4905-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--4905--    object doesn't have a dynamic symbol table
+--4905-- Reading syms from /lib64/ld-2.12.so
+--4905-- Scheduler: using generic scheduler lock implementation.
+--4905-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==4905== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-4905-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==4905== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-4905-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==4905== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-4905-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==4905== 
+==4905== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==4905== don't want to do, unless you know exactly what you're doing,
+==4905== or are doing some strange experiment):
+==4905==   /usr/lib64/valgrind/../../bin/vgdb --pid=4905 ...command...
+==4905== 
+==4905== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==4905==   /path/to/gdb /tmp/.lwIi7M/a.out
+==4905== and then give GDB the following command
+==4905==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=4905
+==4905== --pid is optional if only one valgrind process is running
+==4905== 
+--4905-- REDIR: 0x3822617610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--4905-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--4905-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--4905-- REDIR: 0x3822617480 (index) redirected to 0x4a07c30 (index)
+--4905-- REDIR: 0x3822617500 (strcmp) redirected to 0x4a08570 (strcmp)
+--4905-- Reading syms from /lib64/libc-2.12.so
+--4905-- REDIR: 0x3822a84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4905-- REDIR: 0x3822a86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4905-- REDIR: 0x3822a82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--4905-- REDIR: 0x3822a8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--4905-- REDIR: 0x3822a84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--4905-- REDIR: 0x3822a7b520 (free) redirected to 0x4a063a9 (free)
+--4905-- REDIR: 0x3822a81160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--4905-- REDIR: 0x3822a7a640 (malloc) redirected to 0x4a069ac (malloc)
+==4905== 
+==4905== HEAP SUMMARY:
+==4905==     in use at exit: 300 bytes in 1 blocks
+==4905==   total heap usage: 2 allocs, 1 frees, 868 bytes allocated
+==4905== 
+==4905== Searching for pointers to 1 not-freed blocks
+==4905== Checked 64,696 bytes
+==4905== 
+==4905== 300 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==4905==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==4905==    by 0x401EB5: load_tree_from_file (answer09.c:78)
+==4905==    by 0x401073: test_fileopen (<stdin>:211)
+==4905==    by 0x401AC0: main (<stdin>:422)
+==4905== 
+==4905== LEAK SUMMARY:
+==4905==    definitely lost: 300 bytes in 1 blocks
+==4905==    indirectly lost: 0 bytes in 0 blocks
+==4905==      possibly lost: 0 bytes in 0 blocks
+==4905==    still reachable: 0 bytes in 0 blocks
+==4905==         suppressed: 0 bytes in 0 blocks
+==4905== 
+==4905== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--4905-- 
+--4905-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--4905-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==4905== 
+==4905== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+
+test 2 :: testing destroy_tree()
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	destroy_tree(root);
+
+   (pass.)
+
+test 3 :: testing destroy_tree() when root is NULL
+
+	BusinessNode * root = NULL
+	destroy_tree(root);
+
+   (pass.)
+
+test 4 :: testing whether the tree is built correctly
+
+	BusinessNode * tree = load_tree_from_file("yelp_businesses.tsv");
+	compare_trees(tree, sol_tree);
+Compare found one tree had children that the other tree did not!
+Found NULL in students tree when expecting node:
+1-800-Flowers
+=============
+Stars:
+   1.0
+Address:
+   3385 S Durango Dr, Spring Valley, Las Vegas, NV 89117
+
+
+   // Error, Tree is not built correctly.
+	Check the README for instructions on how to build the tree correctly.
+
+	destroy_tree(tree);
+
+   Testcase FAILED
+Memory errors detected, testcase failed.
+==9961== Memcheck, a memory error detector
+==9961== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==9961== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==9961== Command: /tmp/.lwIi7M/a.out 3
+==9961== Parent PID: 9959
+==9961== 
+--9961-- 
+--9961-- Valgrind options:
+--9961--    --tool=memcheck
+--9961--    --leak-check=full
+--9961--    --verbose
+--9961--    --log-file=memcheck.log
+--9961-- Contents of /proc/version:
+--9961--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--9961-- Arch and hwcaps: AMD64, amd64-sse3
+--9961-- Page sizes: currently 4096, max supported 4096
+--9961-- Valgrind library directory: /usr/lib64/valgrind
+--9961-- Reading syms from /tmp/.lwIi7M/a.out
+--9961-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--9961--    object doesn't have a dynamic symbol table
+--9961-- Reading syms from /lib64/ld-2.12.so
+--9961-- Scheduler: using generic scheduler lock implementation.
+--9961-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==9961== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9961-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==9961== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9961-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==9961== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9961-by-cai71-on-ecegrid-thin6.ecn.purdue.edu
+==9961== 
+==9961== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9961== don't want to do, unless you know exactly what you're doing,
+==9961== or are doing some strange experiment):
+==9961==   /usr/lib64/valgrind/../../bin/vgdb --pid=9961 ...command...
+==9961== 
+==9961== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9961==   /path/to/gdb /tmp/.lwIi7M/a.out
+==9961== and then give GDB the following command
+==9961==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9961
+==9961== --pid is optional if only one valgrind process is running
+==9961== 
+--9961-- REDIR: 0x3822617610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--9961-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--9961-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--9961-- REDIR: 0x3822617480 (index) redirected to 0x4a07c30 (index)
+--9961-- REDIR: 0x3822617500 (strcmp) redirected to 0x4a08570 (strcmp)
+--9961-- Reading syms from /lib64/libc-2.12.so
+--9961-- REDIR: 0x3822a84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9961-- REDIR: 0x3822a86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9961-- REDIR: 0x3822a82c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--9961-- REDIR: 0x3822a8aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--9961-- REDIR: 0x3822a84500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--9961-- REDIR: 0x3822a7b520 (free) redirected to 0x4a063a9 (free)
+--9961-- REDIR: 0x3822a81160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--9961-- REDIR: 0x3822a7a640 (malloc) redirected to 0x4a069ac (malloc)
+--9961-- REDIR: 0x3822a83350 (memchr) redirected to 0x4a08610 (memchr)
+--9961-- REDIR: 0x3822a89670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--9961-- REDIR: 0x3822a7f630 (index) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9961-- REDIR: 0x3822a7f660 (__GI_strchr) redirected to 0x4a07b70 (__GI_strchr)
+--9961-- REDIR: 0x3822a7f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--9961-- REDIR: 0x3822a7f720 (__GI_strcmp) redirected to 0x4a08520 (__GI_strcmp)
+--9961-- REDIR: 0x3822a81120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be50 is 0 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be50 is 0 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be50 is 0 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c040 is 0 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c041 is 1 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c040 is 0 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c041 is 1 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c040 is 0 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c041 is 1 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc60 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc60 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc60 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f0 is 0 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f0 is 0 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f0 is 0 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc61 is 1 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc61 is 1 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc61 is 1 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd0 is 0 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd1 is 1 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd0 is 0 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd1 is 1 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd0 is 0 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd1 is 1 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f1 is 1 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f1 is 1 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f1 is 1 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c410 is 0 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c411 is 1 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c410 is 0 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c411 is 1 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c410 is 0 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c411 is 1 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be51 is 1 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be51 is 1 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be51 is 1 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba61 is 1 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba61 is 1 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba61 is 1 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A07FB2: __GI_strlen (mc_replace_strmem.c:404)
+==9961==    by 0x3822A80E85: strdup (in /lib64/libc-2.12.so)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40134E: compare_trees (<stdin>:284)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==9961==    by 0x3822A80E85: strdup (in /lib64/libc-2.12.so)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40134E: compare_trees (<stdin>:284)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba61 is 1 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08D21: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40134E: compare_trees (<stdin>:284)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba71 is 17 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 8
+==9961==    at 0x4A08D4C: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40134E: compare_trees (<stdin>:284)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba68 is 8 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08D21: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x401374: compare_trees (<stdin>:285)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613baf4 is 52 bytes inside a block of size 53 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 8
+==9961==    at 0x4A08D4C: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x401374: compare_trees (<stdin>:285)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bae8 is 40 bytes inside a block of size 53 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid read of size 1
+==9961==    at 0x4A08D21: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40139A: compare_trees (<stdin>:286)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba13 is 3 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bac0 is 0 bytes inside a block of size 53 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba10 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613beb0 is 0 bytes inside a block of size 37 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be00 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be50 is 0 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c090 is 0 bytes inside a block of size 39 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bff0 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c040 is 0 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==  Address 0x6dded80 is 0 bytes inside a block of size 50 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==  Address 0x6ddecd0 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==  Address 0x6dded20 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6f1b8a0 is 0 bytes inside a block of size 50 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6f1b7f0 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6f1b840 is 0 bytes inside a block of size 17 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6bb03b0 is 0 bytes inside a block of size 40 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6bb0310 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6bb0360 is 0 bytes inside a block of size 13 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bcc0 is 0 bytes inside a block of size 41 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc10 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc60 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== HEAP SUMMARY:
+==9961==     in use at exit: 448,320 bytes in 11,208 blocks
+==9961==   total heap usage: 421,720 allocs, 503,347 frees, 11,338,060 bytes allocated
+==9961== 
+==9961== Searching for pointers to 11,208 not-freed blocks
+==9961== Checked 64,736 bytes
+==9961== 
+==9961== 448,280 bytes in 11,207 blocks are definitely lost in loss record 2 of 2
+==9961==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==9961==    by 0x401D99: create_node (answer09.c:46)
+==9961==    by 0x401F5B: load_tree_from_file (answer09.c:95)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== LEAK SUMMARY:
+==9961==    definitely lost: 448,280 bytes in 11,207 blocks
+==9961==    indirectly lost: 0 bytes in 0 blocks
+==9961==      possibly lost: 0 bytes in 0 blocks
+==9961==    still reachable: 40 bytes in 1 blocks
+==9961==         suppressed: 0 bytes in 0 blocks
+==9961== Reachable blocks (those to which a pointer was found) are not shown.
+==9961== To see them, rerun with: --leak-check=full --show-reachable=yes
+==9961== 
+==9961== ERROR SUMMARY: 6386082 errors from 71 contexts (suppressed: 6 from 6)
+==9961== 
+==9961== 1 errors in context 1 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc60 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1 errors in context 2 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc10 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1 errors in context 3 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bcc0 is 0 bytes inside a block of size 41 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1 errors in context 4 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be50 is 0 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1 errors in context 5 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be00 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1 errors in context 6 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613beb0 is 0 bytes inside a block of size 37 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1 errors in context 7 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1 errors in context 8 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba10 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1 errors in context 9 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bac0 is 0 bytes inside a block of size 53 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 57 errors in context 10 of 71:
+==9961== Invalid read of size 8
+==9961==    at 0x4A08D4C: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40134E: compare_trees (<stdin>:284)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba68 is 8 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 93 errors in context 11 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A07FB2: __GI_strlen (mc_replace_strmem.c:404)
+==9961==    by 0x3822A80E85: strdup (in /lib64/libc-2.12.so)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40134E: compare_trees (<stdin>:284)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 97 errors in context 12 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08D21: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40134E: compare_trees (<stdin>:284)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba71 is 17 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 97 errors in context 13 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08D21: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x401374: compare_trees (<stdin>:285)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613baf4 is 52 bytes inside a block of size 53 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 124 errors in context 14 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08D21: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40139A: compare_trees (<stdin>:286)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba13 is 3 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 163 errors in context 15 of 71:
+==9961== Invalid read of size 8
+==9961==    at 0x4A08D4C: memcpy (mc_replace_strmem.c:882)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x401374: compare_trees (<stdin>:285)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bae8 is 40 bytes inside a block of size 53 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1292 errors in context 16 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba61 is 1 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1292 errors in context 17 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba61 is 1 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1292 errors in context 18 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba61 is 1 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 1985 errors in context 19 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A07FC4: __GI_strlen (mc_replace_strmem.c:404)
+==9961==    by 0x3822A80E85: strdup (in /lib64/libc-2.12.so)
+==9961==    by 0x4011D9: trimcpy (<stdin>:248)
+==9961==    by 0x401268: strtrimcmp (<stdin>:258)
+==9961==    by 0x40134E: compare_trees (<stdin>:284)
+==9961==    by 0x401504: test_build (<stdin>:313)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba61 is 1 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 2426 errors in context 20 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be51 is 1 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 2426 errors in context 21 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be51 is 1 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 2426 errors in context 22 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be51 is 1 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 3340 errors in context 23 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc61 is 1 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 3340 errors in context 24 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc61 is 1 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 3340 errors in context 25 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc61 is 1 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7690 errors in context 26 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==  Address 0x6dded20 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7690 errors in context 27 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==  Address 0x6ddecd0 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7690 errors in context 28 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==  Address 0x6dded80 is 0 bytes inside a block of size 50 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7718 errors in context 29 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6f1b840 is 0 bytes inside a block of size 17 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7718 errors in context 30 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6f1b7f0 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7718 errors in context 31 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6f1b8a0 is 0 bytes inside a block of size 50 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7722 errors in context 32 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c040 is 0 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7722 errors in context 33 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bff0 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7722 errors in context 34 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x401549: test_build (<stdin>:316)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c090 is 0 bytes inside a block of size 39 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7812 errors in context 35 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402183: destroy_tree (answer09.c:161)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6bb0360 is 0 bytes inside a block of size 13 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7812 errors in context 36 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402174: destroy_tree (answer09.c:160)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6bb0310 is 0 bytes inside a block of size 4 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F9A: load_tree_from_file (answer09.c:99)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 7812 errors in context 37 of 71:
+==9961== Invalid free() / delete / delete[] / realloc()
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x402164: destroy_tree (answer09.c:159)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x4021A3: destroy_tree (answer09.c:163)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==    by 0x402193: destroy_tree (answer09.c:162)
+==9961==  Address 0x6bb03b0 is 0 bytes inside a block of size 40 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F82: load_tree_from_file (answer09.c:97)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 12496 errors in context 38 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be50 is 0 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 12496 errors in context 39 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be50 is 0 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 12496 errors in context 40 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613be50 is 0 bytes inside a block of size 27 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 29654 errors in context 41 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc60 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 29654 errors in context 42 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc60 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 29654 errors in context 43 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613bc60 is 0 bytes inside a block of size 21 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 42152 errors in context 44 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 42152 errors in context 45 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 42152 errors in context 46 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613ba60 is 0 bytes inside a block of size 18 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 156263 errors in context 47 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c410 is 0 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 156263 errors in context 48 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c410 is 0 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 158913 errors in context 49 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c410 is 0 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 160315 errors in context 50 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c040 is 0 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 160315 errors in context 51 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c040 is 0 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 163286 errors in context 52 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c040 is 0 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 164800 errors in context 53 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f0 is 0 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 164800 errors in context 54 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f0 is 0 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 167581 errors in context 55 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f0 is 0 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 168222 errors in context 56 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd0 is 0 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 168222 errors in context 57 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd0 is 0 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 171028 errors in context 58 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A08523: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd0 is 0 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 320698 errors in context 59 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c041 is 1 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 320698 errors in context 60 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c041 is 1 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 321840 errors in context 61 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd1 is 1 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 321840 errors in context 62 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd1 is 1 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 323294 errors in context 63 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f1 is 1 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 323294 errors in context 64 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f1 is 1 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 331171 errors in context 65 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E76: tree_insert (answer09.c:69)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c411 is 1 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 331171 errors in context 66 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E3A: tree_insert (answer09.c:65)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c411 is 1 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 362222 errors in context 67 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613cbd1 is 1 bytes inside a block of size 24 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 362782 errors in context 68 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c041 is 1 bytes inside a block of size 9 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 365214 errors in context 69 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c7f1 is 1 bytes inside a block of size 25 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+==9961== 
+==9961== 372318 errors in context 70 of 71:
+==9961== Invalid read of size 1
+==9961==    at 0x4A0853B: __GI_strcmp (mc_replace_strmem.c:730)
+==9961==    by 0x401E17: tree_insert (answer09.c:61)
+==9961==    by 0x401E91: tree_insert (answer09.c:71)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401E55: tree_insert (answer09.c:67)
+==9961==    by 0x401F72: load_tree_from_file (answer09.c:96)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961==  Address 0x613c411 is 1 bytes inside a block of size 23 free'd
+==9961==    at 0x4A06430: free (vg_replace_malloc.c:446)
+==9961==    by 0x401F8E: load_tree_from_file (answer09.c:98)
+==9961==    by 0x4014ED: test_build (<stdin>:312)
+==9961==    by 0x401AED: main (<stdin>:425)
+==9961== 
+--9961-- 
+--9961-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9961-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9961== 
+==9961== ERROR SUMMARY: 6386082 errors from 71 contexts (suppressed: 6 from 6)
+
+test 5 :: testing the create_node function.
+
+	BusinessNode * node = create_node(strdup("5.0"), strdup("Purdue University Electrical Engineering"), strdup("465 Northwestern Avenue")
+   (pass.)
+
+test 6 :: testing the tree_insert function.
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = create_node(strdup("5.0"),strdup("test node"),strdup("no address"));
+	BusinessNode * root = tree_insert(node,root);
+   (pass.)
+
+test 7 :: testing the tree_insert function: insert to NULL root.
+
+	BusinessNode * root = NULL;
+	BusinessNode * node = create_node(strdup("5.0"),strdup("test node"),strdup("no address"));
+	BusinessNode * root = tree_insert(node,root);
+   (pass.)
+
+test 8 :: testing the tree_search_name function: Looking for: Pine Cone Restaurant
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = tree_search_name("Pine Cone Restaurant",root);
+   (pass.)
+
+test 9 :: testing the tree_search_name function: Looking for: Full Circle Auto Wash
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = tree_search_name("Full Circle Auto Wash",root);
+   (pass.)
+
+test 10 :: testing the tree_search_name function: Looking for: Oriental Supermarket
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = tree_search_name("Oriental Supermarket",root);
+   (pass.)
+
+test 11 :: testing the tree_search_name function: Looking for: Surfer Express Car Wash
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = tree_search_name("Surfer Express Car Wash",root);
+   (pass.)
+
+test 12 :: testing the tree_search_name function: Looking for: Dennis' Special Shop
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = tree_search_name("Dennis' Special Shop",root);
+   (pass.)
+
+test 13 :: testing the tree_search_name function: Looking for: Purdue University
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = tree_search_name("Purdue University",root);
+   (pass.)
+
+test 14 :: testing the tree_search_name function: Looking for: Vinny-Boy's Italian Market Place
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = tree_search_name("Vinny-Boy's Italian Market Place",root);
+   (pass.)
+
+test 15 :: testing the tree_search_name function: Looking for: Mando's Mexican Food
+
+	BusinessNode * root = load_tree_from_file("yelp_businesses.tsv");
+	BusinessNode * node = tree_search_name("Mando's Mexican Food",root);
+   (pass.)
+
+
+13/15 testcases passed.
+Overall mark is a FAIL.
