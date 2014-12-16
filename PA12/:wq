@@ -1,0 +1,169 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<pthread.h>
+#include<string.h>
+#include<math.h>
+#include "answer12.h"
+
+/*int main(int argc, char * * argv)
+{
+  const char * str = "340282366920938463463374607431768211455";
+  uint128 w = alphaTou128(str);
+  printf("success 1st function!~\n");
+  char * w_str = u128ToString(w);
+  printf("Biiigggg number: %s\n", w_str);
+  if(strcmp(str, w_str) != 0)
+  printf("ERROR!, expected %s\n", str);
+  free(w_str);
+  return EXIT_SUCCESS;
+}
+*/
+
+typedef struct chunck
+{
+  uint128 upper;
+  uint128 lower;
+}Chunk;
+
+uint128 alphaTou128(const char * str)
+{
+  uint128 ret = 0;
+  int minus = 0;
+  
+  while (str[0] == ' ' || str[0] == '\f' || str[0] =='\n' || str[0] == '\r' || str[0] == '\t' || str[0] == '\v')
+  {
+    str++;
+  }
+  if(str[0] == '-')
+  {
+    str++;
+    minus = -1;
+  }
+  if(str [ret] >= '0' && str [ret] <= '9')
+  {
+     while (str [0] >= '0' && str [0] <= '9')
+    {
+      ret = ret*10 + (*str - '0');
+      str++;
+    }
+    if (minus != 0)
+    {
+      return(minus * ret);
+    }
+    else
+    {
+      return (ret);
+    }
+  }
+  else
+  {
+    return(0);
+  }
+}
+ 
+char * u128ToString(uint128 value)
+{
+  uint128 ind = value;
+  int counter = 0;
+  //
+  printf("counter = 0\n");
+  //
+  while(ind > 0)
+  {
+    ind = ind/10;
+    counter ++;
+  }
+  //
+  printf("ind = %d\n", ind);
+  //
+  char * arr;
+  arr = malloc((counter+1) *sizeof(char));
+  //
+  printf("malloc success!!!\n");
+  //
+  if (arr = NULL)
+  {
+    return 0;
+  }
+ 
+  int cd = counter;
+  //
+  printf("counter = %d\n", counter);
+  printf("cd = %d\n", cd);
+  //
+  while (cd >= 0)
+  {
+    arr[cd - 1] = value % 10 + '0';
+    printf("arr[%d] = %d\n", cd, value);
+    value /= 10; 
+    cd--;
+  }
+  arr[counter] = '\0';
+  return  arr;
+}
+
+int primalityTestParallel(uint128 value, int n_threads)
+{
+  if(value == 2 || value == 1)
+  {
+    return TURE;
+  }
+  if(value % 2 == 0)
+  {
+    return FALSE;
+  } 
+
+  uint128 ch = floor(sqrt(value));
+  uint128 n = ch / n_threads;
+ 
+  Chunck * c = malloc(n_threads * sizeof(Chunck));
+  pthread_t * threads = malloc(n_threads *sizeof(pthread_t));
+  int i;
+  
+  for(i = 0; i < n_threads; i++)
+  {
+    c[i].lower = i * n;
+    c[i].upper = (i + 1) * n;
+    
+    if (c[i].lower <= 2)
+    {
+       c[i].lower = 3;
+    }
+    if(c[i].lower % 2 == 0)
+    {
+      return FALSE;
+      break;
+    }
+
+    check = pthread_create(& threads[ind], i, test, (void *)& c[i]);
+  }    
+  
+  int dex;
+  int join;
+  for(dex = 0; dex < n_threads; dex++)
+  {
+     join = pthread_join(threads[dex], NULL);
+  }
+
+  
+}
+
+
+void test(void * number)
+    uint128 * temp1 =(uint128 *) c.lower;
+    uint128 * temp2 =(uint128 *) c.upper;
+    uint128 i;
+    for (i = temp1; i <= temp2 ; i++)
+    {
+        if ((n % i) == 0)
+        { 
+          return FALSE;
+          break;
+        }  
+    }    return TRUE;
+}
+
+
+
+
+
